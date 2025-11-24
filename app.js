@@ -1,4 +1,4 @@
-const API_URL = "http://127.0.0.1:5000/predictions/today";
+const API_URL = "https://nba-random-forest-predictor.fly.dev/predictions/today";
 
 const TEAM_LOGOS = {
     ATL: "https://a.espncdn.com/i/teamlogos/nba/500/atl.png",
