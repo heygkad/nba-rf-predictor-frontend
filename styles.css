@@ -1,0 +1,318 @@
+/* ===== Global ===== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --bg: #050816;
+    --bg-elevated: #0b1020;
+    --bg-card: #111827;
+    --accent: #3b82f6;
+    --accent-soft: rgba(59, 130, 246, 0.15);
+    --text-main: #f9fafb;
+    --text-subtle: #9ca3af;
+    --border-subtle: #1f2933;
+    --danger: #f97373;
+    --success: #4ade80;
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+    background: radial-gradient(circle at top, #111827, #020617 60%);
+    color: var(--text-main);
+    min-height: 100vh;
+}
+
+/* ===== Layout ===== */
+.app-root {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 24px 16px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* ===== Header / Top bar ===== */
+.top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(15, 23, 42, 0.9);
+    backdrop-filter: blur(16px);
+    border-radius: 999px;
+    padding: 10px 16px 10px 10px;
+    border: 1px solid rgba(148, 163, 184, 0.25);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.brand-dot {
+    width: 26px;
+    height: 26px;
+    border-radius: 999px;
+    background: conic-gradient(from 200deg, #3b82f6, #22c55e, #eab308, #3b82f6);
+    box-shadow: 0 0 18px rgba(59, 130, 246, 0.8);
+}
+
+.brand-text {
+    font-weight: 600;
+    letter-spacing: 0.03em;
+}
+
+/* ===== Button ===== */
+.primary-btn {
+    padding: 9px 18px;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    background: var(--accent);
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: background 0.15s ease, transform 0.1s ease, box-shadow 0.15s ease;
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
+}
+
+.primary-btn:hover {
+    background: #2563eb;
+    transform: translateY(-1px);
+    box-shadow: 0 14px 30px rgba(37, 99, 235, 0.6);
+}
+
+.primary-btn:active {
+    transform: translateY(0px) scale(0.98);
+    box-shadow: 0 5px 16px rgba(37, 99, 235, 0.4);
+}
+
+/* ===== Content / Meta ===== */
+.content {
+    background: rgba(15, 23, 42, 0.7);
+    border-radius: 24px;
+    padding: 18px 18px 22px;
+    border: 1px solid rgba(30, 64, 175, 0.35);
+    box-shadow: 0 16px 40px rgba(15, 23, 42, 0.9);
+}
+
+.meta {
+    margin-bottom: 12px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.status-text {
+    font-size: 14px;
+    color: var(--text-subtle);
+}
+
+.date-text {
+    font-size: 13px;
+    color: var(--text-subtle);
+    opacity: 0.8;
+}
+
+/* ===== Games grid ===== */
+.games-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin-top: 4px;
+}
+
+@media (min-width: 720px) {
+    .games-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* ===== Game card ===== */
+.game-card {
+    background: var(--bg-card);
+    border-radius: 18px;
+    padding: 14px 14px 16px;
+    border: 1px solid var(--border-subtle);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeInUp 0.4s ease forwards;
+    animation-delay: var(--delay, 0ms);
+}
+
+.game-card:hover {
+    border-color: rgba(59, 130, 246, 0.7);
+    box-shadow: 0 18px 40px rgba(37, 99, 235, 0.6);
+    transform: translateY(-2px);
+}
+
+/* Header row with logos */
+.card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.team-block {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.team-block.away {
+    justify-content: flex-end;
+    text-align: right;
+}
+
+.logo-wrap {
+    width: 32px;
+    height: 32px;
+    border-radius: 999px;
+    background: rgba(15, 23, 42, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: 1px solid rgba(148, 163, 184, 0.4);
+}
+
+.team-logo {
+    width: 26px;
+    height: 26px;
+    object-fit: contain;
+}
+
+.team-text-main {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.team-text-sub {
+    font-size: 11px;
+    color: var(--text-subtle);
+}
+
+/* vs badge */
+.vs-pill {
+    padding: 4px 9px;
+    border-radius: 999px;
+    border: 1px solid rgba(148, 163, 184, 0.4);
+    font-size: 11px;
+    color: var(--text-subtle);
+}
+
+/* Favorite tag */
+.favorite-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 999px;
+    background: var(--accent-soft);
+    color: #bfdbfe;
+}
+
+/* Probability section */
+.prob-section {
+    margin-top: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.prob-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    font-size: 13px;
+}
+
+.prob-label {
+    color: var(--text-subtle);
+}
+
+.prob-value {
+    font-weight: 500;
+}
+
+/* Probability bar */
+.prob-bar {
+    position: relative;
+    margin-top: 2px;
+    height: 8px;
+    border-radius: 999px;
+    background: #020617;
+    overflow: hidden;
+    border: 1px solid rgba(30, 64, 175, 0.5);
+}
+
+.prob-bar-fill {
+    height: 100%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #22c55e, #3b82f6);
+    width: 0;
+    transition: width 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Edge / confidence chip */
+.edge-row {
+    margin-top: 8px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.edge-chip {
+    font-size: 11px;
+    padding: 4px 8px;
+    border-radius: 999px;
+    background: rgba(15, 118, 110, 0.25);
+    color: #a5f3fc;
+}
+
+/* ===== Empty / error states ===== */
+.empty-state,
+.error-state {
+    text-align: center;
+    padding: 30px 12px;
+    color: var(--text-subtle);
+    font-size: 14px;
+}
+
+/* ===== Footer ===== */
+.footer {
+    margin-top: 4px;
+    font-size: 11px;
+    color: var(--text-subtle);
+    text-align: center;
+    opacity: 0.75;
+}
+
+/* ===== Animations ===== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

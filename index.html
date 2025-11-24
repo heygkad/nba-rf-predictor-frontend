@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NBA Win Probability Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-root">
+        <header class="top-bar">
+            <div class="brand">
+                <div class="brand-dot"></div>
+                <span class="brand-text">NBA Predictor</span>
+            </div>
+            <button id="loadBtn" class="primary-btn">
+                🔄 Refresh Predictions
+            </button>
+        </header>
+
+        <main class="content">
+            <section class="meta">
+                <div id="statusText" class="status-text">Click "Refresh Predictions" to load games.</div>
+                <div id="dateText" class="date-text"></div>
+            </section>
+
+            <section id="gamesContainer" class="games-grid">
+                <!-- Cards injected here -->
+            </section>
+        </main>
+
+        <footer class="footer">
+            <span>Model-powered win probabilities for today’s NBA slate.</span>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
